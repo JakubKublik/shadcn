@@ -9,6 +9,8 @@ import {
     NavigationMenuViewport,
   } from "@/components/ui/navigation-menu"
 import { ModeToggle } from "./change";
+import Link from "next/link";
+
 
   export default function Menu(){
     return(
@@ -17,8 +19,16 @@ import { ModeToggle } from "./change";
   <NavigationMenuList>
     <NavigationMenuItem>
       <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <NavigationMenuLink>Link</NavigationMenuLink>
+      <NavigationMenuContent className="flex flex-col">
+
+        <NavigationMenuLink className="m-5">
+            <Link href="/">Główna</Link>
+            </NavigationMenuLink>
+
+        <NavigationMenuLink className="m-5">
+            <Link href="./strona1">Strona1</Link>
+            </NavigationMenuLink>
+      
       </NavigationMenuContent>
     </NavigationMenuItem>
   </NavigationMenuList>
@@ -27,5 +37,5 @@ import { ModeToggle } from "./change";
 <ModeToggle/>
 </div>
 </div>
-    );
+    )
   }
