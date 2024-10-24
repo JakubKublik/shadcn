@@ -36,19 +36,21 @@ export default function News() {
           >
             <div>
               {item.urlToImage ? (
+                <div className="relative h-[200px] w-[500px]">
                 <Image
                   src={item.urlToImage}
                   alt={item.title || "News Image"}
-                  width={400}
-                  height={200}
+                  layout="fill"
                 />
+                </div>
               ) : (
+                <div className="relative h-[200px] w-[500px]">
                 <Image
                   src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
                   alt="No Image Available"
-                  width={400}
-                  height={200}
+                  layout="fill" 
                 />
+                </div>
               )}
             </div>
             <p className="text-center mt-2">{item.title}</p>
