@@ -4,6 +4,7 @@ import { DialogDemo } from '@/components/edit';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { AvatarDemo } from '@/components/user_avatar';
 import { Label } from '@radix-ui/react-dropdown-menu';
 import { Timer } from 'lucide-react';
 import Image from 'next/image';
@@ -16,6 +17,11 @@ export default function Strona5(){
     const[samochody,setSamochody]  = useState(null)
     const[dane, setDane] = useState({marka: null, model: null, czas_parkowania:null})
     const[zdjecie,setZdjecie] = useState(null)
+    const[user, setUser]=useState(null)
+
+    useEffect(()=>{
+        setUser(pb.authStore.model)
+    },[])
     useEffect(()=>{
         const getData = async ()=>{
             try{
@@ -83,13 +89,20 @@ export default function Strona5(){
         setSamochody(tmpsamochody)
         console.log("index: " + index)
     }
+    const login = async ()=>{
+        setUser(pb.authStore.model)
+    }
 
 
     return(
+        
         <div>
-            {
-                samochody &&
-                
+            <AvatarDemo onLogin={login} user={user} setUser={setUser}/>
+            
+            
+            
+            
+                {user &&
                 <div className='flex flex-wrap w-full justify-center gap-5'>
                                 <div className='flex flex-col'>
                 <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -113,7 +126,8 @@ export default function Strona5(){
                     
                     </div>
                 </div>
-                {samochody.map((samochod)=>(
+                
+                {samochody && samochody.map((samochod)=>(
                     
                         <Card key={samochod} className="w-[400px] h-[400px]">
                 <CardTitle>{samochod.marka}</CardTitle>
@@ -146,7 +160,8 @@ export default function Strona5(){
             
 
                 </div>
-}
+            }
         </div>
+       
     )
 }
