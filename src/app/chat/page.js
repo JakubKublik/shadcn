@@ -20,7 +20,7 @@ export default function Chat(){
 
         getData()
     }, [])
-    pb.collection('chat').subscribe('RECORD_ID', function (e) {
+    pb.collection('chat').subscribe('*', function (e) {
         console.log(e.action);
         console.log(e.record);
         if(e.action == "create"){
@@ -36,7 +36,7 @@ export default function Chat(){
             {
                 dane &&
                 dane.map((wiadomosc)=>(
-                    <p key={id}></p>
+                    <p ></p>
                 ))
             }
 
